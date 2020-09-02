@@ -43,8 +43,8 @@ class Results
     /**
      * @return PlainRenderer
      */
-    public function render()
+    public function render(array $extra = [])
     {
-        return (new PlainRenderer($this->meta))->render();
+        return (new PlainRenderer($this->meta))->render($extra);
     }
 }

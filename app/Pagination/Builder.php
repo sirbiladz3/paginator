@@ -26,6 +26,11 @@ class Builder
         $this->builder = $builder;
     }
 
+    /**
+     * @param int $page
+     * @param int $perPage
+     * @return Results
+     */
     public function paginate($page = 1, $perPage = 10)
     {
         $page = max(1, $page);
@@ -49,6 +54,11 @@ class Builder
 
     }
 
+    /**
+     * @param $page
+     * @param $perPage
+     * @return float|int
+     */
     protected function getFirstResultIndex($page, $perPage)
     {
         return ($page - 1) * $perPage;

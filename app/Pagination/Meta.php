@@ -68,8 +68,9 @@ class Meta
      */
     public function lastPage()
     {
-        return ceil($this->total() / $this->perPage());
+        return (int) ceil($this->total() / $this->perPage());
     }
+
 
     /**
      * @param $property

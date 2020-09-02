@@ -12,10 +12,19 @@ use Iterator;
  */
 class PageIterator implements Iterator
 {
+    /**
+     * @var array
+     */
     protected $pages;
 
+    /**
+     * @var Meta
+     */
     protected $meta;
 
+    /**
+     * @var
+     */
     protected $position;
 
     /**
@@ -28,6 +37,35 @@ class PageIterator implements Iterator
         $this->pages = $pages;
         $this->meta = $meta;
     }
+
+    /**
+     * @return bool
+     */
+    public function isCurrentPage()
+    {
+        return $this->current() === $this->meta->page;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPrevious()
+    {
+        if ($this->meta->page <= 0) {
+            return false;
+        }
+
+        return $this->meta->page > 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasNext()
+    {
+        return $this->meta->page < $this->meta->lastPage;
+    }
+
 
     /**
      * @inheritDoc
@@ -50,7 +88,7 @@ class PageIterator implements Iterator
      */
     public function key()
     {
-        $this->position = 0;
+        return $this->position = 0;
     }
 
     /**
